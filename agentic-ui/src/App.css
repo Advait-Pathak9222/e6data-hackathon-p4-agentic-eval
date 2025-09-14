@@ -1,22 +1,312 @@
-/* App.css — simple modern styling (no Tailwind required) */
-body { font-family: Inter, Arial, sans-serif; margin: 0; background: #f6f8fa; color: #111827; }
-.container { max-width: 1100px; margin: 24px auto; padding: 20px; }
-h1 { font-size: 28px; margin-bottom: 14px; }
-.agents { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
-.agent-card { background: white; padding: 12px; border-radius: 10px; box-shadow: 0 6px 18px rgba(15,23,42,0.06); }
-.agent-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-.agent-card label { display:block; font-size:12px; color:#374151; margin-top:8px; }
-.agent-card textarea { width:100%; min-height:54px; resize:vertical; padding:8px; border-radius:6px; border:1px solid #e5e7eb; margin-top:6px; font-size:14px; }
-.controls { margin-top: 12px; display:flex; gap:8px; }
-.controls button { background:#6b46c1; border:none; color:white; padding:8px 12px; border-radius:8px; cursor:pointer; }
-.controls button[disabled] { opacity:0.6; cursor:not-allowed; }
+/* Black Background Based Theme with Subtle Colored Bars and Animations */
+body {
+  font-family: Inter, Arial, sans-serif;
+  margin: 0;
+  background: #010101;
+  color: #e5e7eb;
+  min-height: 100vh;
+  transition: background 0.5s ease;
+}
 
-.results { margin-top:20px; }
-.result-card { background:white; padding:12px; border-radius:10px; margin-bottom:12px; box-shadow: 0 4px 12px rgba(15,23,42,0.04); }
-.error { color: #b91c1c; font-weight:600; }
+.container {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 20px;
+}
 
-.details { margin-top: 12px; }
-.detail-item { padding:8px 0; border-bottom:1px dashed #e6e6e6; }
-.raw-explanation pre { white-space: pre-wrap; background:#fafafa; padding:10px; border-radius:6px; border:1px solid #f0f0f0; }
+h1 {
+  font-size: 32px;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, #7f56d9ef, #d9488aef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.3s ease;
+}
 
-.small { background:#efefef; border:none; padding:4px 8px; border-radius:6px; cursor:pointer; font-size:12px; }
+h2 {
+  margin-top: 24px;
+  font-size: 22px;
+  color: #b0b8c1;
+  text-shadow: 0 0 8px #2e2f36;
+}
+
+h3 {
+  margin-top: 18px;
+  font-size: 18px;
+  color: #d0d4db;
+  text-shadow: 0 0 6px #2e2f36;
+}
+
+/* Bars with subtle different but muted colors */
+.agents {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.agent-card {
+  background: linear-gradient(135deg, #141414, #1a1a1a);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(20, 20, 20, 0.9);
+  border: 1px solid #222;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card:nth-child(odd) {
+  background: linear-gradient(135deg, #1a181f, #232027);
+  border-color: #2c2731;
+}
+
+.agent-card:hover {
+  background: linear-gradient(135deg, #292533, #3a3747);
+  box-shadow: 0 10px 20px rgba(80, 70, 110, 0.8);
+  transform: translateY(-4px);
+  transition: transform 0.3s ease, background 0.4s ease, box-shadow 0.5s ease;
+}
+
+.agent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #e9e9f1;
+}
+
+/* Subtle different colored label */
+.agent-card label {
+  display: block;
+  font-size: 12px;
+  color: #8c919e;
+  margin-top: 10px;
+  letter-spacing: 0.8px;
+}
+
+/* Textarea */
+.agent-card textarea {
+  width: 100%;
+  min-height: 56px;
+  resize: vertical;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1.5px solid #374151;
+  margin-top: 8px;
+  font-size: 14px;
+  background: #121212;
+  color: #edf2f7;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  box-shadow: inset 1px 1px 3px #202020;
+}
+.agent-card textarea:focus {
+  border-color: #7f56d9;
+  background: #191919;
+  outline: none;
+  box-shadow: 0 0 10px #7f56d9;
+}
+
+/* Buttons with subtle gradient backgrounds with animation */
+.controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.controls button {
+  background: linear-gradient(90deg, #7f56d9dd, #d9488add);
+  border: none;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(127, 86, 217, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.4s ease, background 0.4s ease;
+  will-change: transform, box-shadow;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.controls button::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.controls button:hover::after {
+  left: 100%;
+  transition: left 0.5s ease;
+}
+
+.controls button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(217, 72, 138, 0.9);
+}
+
+.controls button[disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Results and error cards */
+.results {
+  margin-top: 30px;
+}
+
+.result-card {
+  background: linear-gradient(135deg, #1a1a1a, #202020);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: 0 5px 18px rgba(30, 30, 30, 0.85);
+  border: 1px solid #262626;
+  transition: background 0.3s ease;
+}
+
+.error {
+  color: #fca5a5;
+  font-weight: 700;
+  padding: 10px;
+  background: #7f1d1d;
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px #dc2626a0;
+  animation: pulseError 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseError {
+  0%, 100% {
+    background-color: #7f1d1d;
+    box-shadow: 0 0 10px #dc2626a0;
+  }
+  50% {
+    background-color: #9b2c2c;
+    box-shadow: 0 0 15px #f87171;
+  }
+}
+
+.details {
+  margin-top: 14px;
+}
+
+.detail-item {
+  padding: 8px 0;
+  border-bottom: 1px dashed #3b4150;
+  font-size: 14px;
+  color: #d4d7dd;
+}
+
+/* Raw explanation box */
+.raw-explanation pre {
+  white-space: pre-wrap;
+  background: #262a37;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #374151;
+  font-size: 13px;
+  color: #f1f5f9;
+  box-shadow: inset 0 0 8px #3a3f58;
+}
+
+/* Batch evaluation section */
+.batch {
+  margin-top: 36px;
+  padding: 22px;
+  background: linear-gradient(135deg, #121212, #181818);
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(50, 50, 50, 0.7);
+  border: 1.5px solid #2a2a2a;
+  transition: box-shadow 0.3s ease;
+}
+
+.batch:hover {
+  box-shadow: 0 6px 25px rgba(110, 90, 180, 0.8);
+}
+
+.batch input[type="file"] {
+  margin-top: 10px;
+  color: #dedede;
+}
+
+/* Leaderboard table */
+.batch-results table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #121212;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(40, 40, 40, 0.8);
+  transition: box-shadow 0.3s ease;
+}
+
+.batch-results th,
+.batch-results td {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.batch-results th {
+  background: #202024;
+  color: #e7e7eb;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid #3a3a52;
+}
+
+.batch-results td {
+  color: #b1b3b8;
+}
+
+.batch-results tr:nth-child(even) {
+  background: #1c1c1c;
+}
+
+.batch-results tr:hover {
+  background: #2a2a45;
+}
+
+/* Heatmap chart card */
+.batch-results .recharts-wrapper {
+  background: linear-gradient(135deg, #121212, #191919);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(40, 40, 40, 0.8);
+  margin-top: 22px;
+  transition: box-shadow 0.4s ease;
+}
+
+.batch-results .recharts-wrapper:hover {
+  box-shadow: 0 6px 24px rgba(100, 90, 170, 0.9);
+}
+
+/* Small remove button */
+.small {
+  background: #2c2f3a;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #dcdcdc;
+  transition: background 0.3s ease;
+}
+
+.small:hover {
+  background: #454a62;
+}
+
+/* General smooth transitions */
+* {
+  transition: all 0.3s ease;
+}

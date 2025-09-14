@@ -1,85 +1,114 @@
-# Agentic Evaluation Framework  
-*A Project for the e6data x IIT BHU Hackathon 2025 by The Pareto Crew*
+# 🤖 Agentic Evaluation Framework  
+A Project for the e6data x IIT BHU Hackathon 2025 by **The Pareto Crew**  
+
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)  
+[![Colab](https://img.shields.io/badge/Google%20Colab-Ready-orange.svg)](https://colab.research.google.com/)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)  
 
 ---
 
-## The Problem: The Scaling Challenge of AI Evaluation
-As AI agents become more powerful and widespread, evaluating their performance is a critical bottleneck. Manual evaluation is:
-- Slow  
-- Expensive  
-- Subjective  
-- Impossible to scale  
+## 🚩 The Problem: The Scaling Challenge of AI Evaluation  
+
+As AI agents become more powerful and widespread, *evaluating their performance* is a critical bottleneck.  
+
+Manual evaluation is:  
+- ❌ Slow  
+- ❌ Expensive  
+- ❌ Subjective  
+- ❌ Impossible to scale  
 
 When a company has hundreds of agents producing thousands of responses, how can they efficiently ensure that the agents:  
-- Follow instructions precisely?  
-- Avoid factual hallucinations?  
-- Provide coherent and useful responses?  
-- Do not make unwarranted assumptions?  
+- ✅ Follow instructions precisely  
+- ✅ Avoid factual hallucinations  
+- ✅ Provide coherent and useful responses  
+- ✅ Do not make unwarranted assumptions  
 
-Without an automated and robust solution, building trustworthy AI is not feasible.
-
----
-
-## Our Solution: An Automated Evaluation & Comparison Platform
-We have developed the **Agentic Evaluation Framework**, an interactive platform designed to solve the problem of large-scale agent evaluation.  
-
-Our framework provides developers and researchers with the tools to:  
-- Automatically score agent responses  
-- Compare different models head-to-head  
-- Track performance over time  
-
-Our solution directly addresses the hackathon challenge by accepting prompts, responses, and metadata to output an **interpretable performance report**.
+Without an automated and robust solution, *building trustworthy AI is not feasible*.  
 
 ---
 
-## Key Features
-Our framework is built as an interactive **Google Colab notebook** and includes:
+## 💡 Our Solution: An Automated Evaluation & Comparison Platform  
 
-- **Batch Processing Engine**: Processes thousands of responses from a CSV file, scoring each one across four key dimensions:  
-  *Instruction-following, coherence, assumption control, and hallucination detection.*  
+We developed the *Agentic Evaluation Framework, an **interactive platform* designed to solve the problem of large-scale agent evaluation.  
 
-- **Live "Head-to-Head" Demo**: A user-friendly interface where a user can input a single prompt and have two different AI models generate responses in real-time. Both responses are instantly evaluated and displayed side-by-side.  
+It provides developers and researchers with tools to:  
+- 🔍 Automatically score agent responses  
+- ⚖ Compare different models head-to-head  
+- 📈 Track performance over time  
 
-- **Performance Dashboard**: A visualization tab with a ranked leaderboard of all evaluated agents, providing a clear overview of which models perform best on average.  
-
-- **Metadata Integration**: The evaluation process accepts metadata, allowing for more context-aware and nuanced judgments of an agent's response.  
-
----
-
-## Technical Methodology
-Our project was built with a focus on **innovation, speed, and technical depth**.
-
-- **Core Technology**: Python, running in a Google Colab environment with a T4 GPU.  
-- **Local LLMs with Ollama**: Runs powerful open-source models like *llama3:8b* and *phi3:mini* locally, ensuring zero cost and high flexibility.  
-- **Asynchronous Processing for Speed**: In the Head-to-Head demo, all four LLM calls (two for generation, two for evaluation) are executed in parallel with Python's `asyncio`, reducing waiting time and ensuring a smooth user experience.  
-- **Rich Interactive UI**: Built with `ipywidgets`, creating a responsive and intuitive application directly within the Colab notebook.  
+Our framework directly addresses the hackathon challenge by accepting prompts, responses, and metadata to output an *interpretable performance report*.  
 
 ---
 
-## Setup and Usage Instructions
-To run our project, follow these steps in a **Google Colab environment**:
+## ✨ Key Features  
 
-1. **Open the File**  
-   - Open the provided `Agentic_AI.py` file in Google Colab.  
-   - Copy-paste the code inside a single cell.  
+Built as an *interactive Google Colab notebook*, our framework includes:  
 
-2. **Set the Runtime**  
-   - Go to `Runtime -> Change runtime type`  
-   - Select **T4 GPU**.  
+- ⚡ *Batch Processing Engine*  
+  Process thousands of responses from a CSV file, scoring each one across four key dimensions:  
+  Instruction-following, coherence, assumption control, hallucination detection.  
 
-3. **Run Cell 1 (Setup)**  
-   - Installs Ollama, downloads the required AI models, and installs dependencies.  
-   - Takes a few minutes.  
+- 🎯 *Live "Head-to-Head" Demo*  
+  Input a single prompt → two AI models generate responses → both evaluated & displayed *side-by-side in real-time*.  
 
-4. **Upload Data**  
-   - Use the file browser (left panel) to upload `final_report_with_scores.csv`.  
-   - Required for the Performance Dashboard.  
+- 📊 *Performance Dashboard*  
+  A visualization tab with a *ranked leaderboard* of evaluated agents, offering a clear overview of performance.  
 
-5. **Run Cell 2 (Application)**  
-   - Launches the interactive, tabbed interface.  
-   - You can now use the **Head-to-Head Demo** and **Performance Dashboard**.  
+- 🧩 *Metadata Integration*  
+  Evaluation process accepts metadata for *context-aware judgments*.  
 
 ---
 
-## Thank You
-Thank you for evaluating our project!
+## 🛠 Technical Methodology  
+
+- *Core Technology:* Python (Google Colab, T4 GPU)  
+- *Local LLMs with Ollama:* llama3:8b and phi3:mini (open-source, zero cost, highly flexible)  
+- *Asynchronous Processing:* asyncio executes generation + evaluation calls in parallel → *faster results*  
+- *Interactive UI:* Built with ipywidgets for a *responsive Colab experience*  
+
+---
+
+## ⚙ Setup & Usage Instructions  
+
+### 🔧 1. Open in Google Colab  
+- Open Agentic_AI.py in Colab  
+- Copy-paste code into a single cell  
+
+### ⚙ 2. Set the Runtime  
+- Go to Runtime → Change runtime type  
+- Select *T4 GPU*  
+
+### 📦 3. Run Setup  
+- Run *Cell 1*  
+- Installs Ollama, pulls required models, installs dependencies  
+- Takes a few minutes  
+
+### 📂 4. Upload Data  
+- Use Colab file browser (left panel)  
+- Upload final_report_with_scores.csv  
+- Required for Performance Dashboard  
+
+### 🚀 5. Launch the App  
+- Run *Cell 2*  
+- Opens interactive *Head-to-Head Demo* + *Performance Dashboard*  
+
+---
+
+## 📊 Example Workflow  
+
+1. Upload a dataset with agent responses  
+2. Run *batch evaluation* → get scores across 4 metrics  
+3. View *Performance Dashboard* → ranked leaderboard  
+4. Use *Head-to-Head Demo* → real-time model comparison  
+
+---
+
+## 📜 License  
+
+This project is licensed under the [MIT License](LICENSE).  
+
+---
+
+## 🙌 Acknowledgements  
+
+Developed by *The Pareto Crew* for the e6data x IIT BHU Hackathon 2025.
