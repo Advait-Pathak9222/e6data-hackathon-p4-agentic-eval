@@ -4,3 +4,5 @@ matplotlib
 seaborn
 ipywidgets
 ipython
+fastapi
+uvicorn
